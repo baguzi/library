@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         searchSystem search_Book = new searchSystem();
         returnSystem return_Book = new returnSystem();
+        addBooksystem add_Book = new addBooksystem();
         Scanner sc = new Scanner(System.in);
         book book1 = new book(475 , "미생물리학" , "김병홍","대출");
         book book2 = new book(530 , "재료공학", "김암수", "반납");
@@ -17,7 +18,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("1.도서저장목록");
+            System.out.println("1.도서저장");
             System.out.println("2.도서검색");
             System.out.println("3.도서반납");
             System.out.println("4. 종료 ");
@@ -26,11 +27,11 @@ public class Main {
             int num = sc.nextInt();
 
             if (num == 1) {
-                for (int i = 0; i < books.length; i++) {
-                    books[i].printInfo();
-                    System.out.println("\n");
-                }
+                books = add_Book.addBook(books);
+                System.out.println("도서가 추가되었습니다.\n");
+
             }
+
 
             if (num == 2) {
                 search_Book.searchBook(books);
@@ -42,7 +43,7 @@ public class Main {
             }
 
             if (num == 4) {
-                System.out.println("프로그램 종료");
+                System.out.println("프로그램을 종료합니다.");
                 break;
             }
         }
