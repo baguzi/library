@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class addBooksystem {
 
     Scanner sc = new Scanner(System.in);
 
-    public book[] addBook(book[] books) {
+    public List<book> addBook(List<book> books) {
 
         System.out.print("도서 번호: ");
         int id = sc.nextInt();
@@ -19,18 +21,8 @@ public class addBooksystem {
         System.out.print("대출/반납: ");
         String status = sc.nextLine();
 
+        books.add(new book(id, name, writer, status));
 
-        book[] newBooks = new book[books.length + 1];
-
-
-        for (int i = 0; i < books.length; i++) {
-            newBooks[i] = books[i];
-        }
-
-
-        newBooks[books.length] = new book(id, name, writer, status);
-
-
-        return newBooks;
+        return books;
     }
 }
