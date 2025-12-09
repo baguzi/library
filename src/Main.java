@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         searchSystem search_Book = new searchSystem();
@@ -10,12 +11,16 @@ public class Main {
         addBooksystem add_Book = new addBooksystem();
         Scanner sc = new Scanner(System.in);
 
-        List<book> books = new ArrayList<>();
+        // CSV 불러오기
+        List<book> books = loadData.load("library.csv");
 
-        books.add(new book(475, "미생물리학", "김병홍", "대출"));
-        books.add(new book(530, "재료공학", "김암수", "반납"));
-        books.add(new book(531, "그림과 나", "김선현", "대출"));
-        books.add(new book(811, "시가되는 순간", "김세환", "반납"));
+        // 비어있으면 초기 데이터 추가
+        if (books.isEmpty()) {
+            books.add(new book(475, "미생물리학", "김병홍", "대출"));
+            books.add(new book(530, "재료공학", "김암수", "반납"));
+            books.add(new book(531, "그림과 나", "김선현", "대출"));
+            books.add(new book(811, "시가되는 순간", "김세환", "반납"));
+        }
 
         while (true) {
 
@@ -41,6 +46,7 @@ public class Main {
             }
 
             if (num == 4) {
+                saveData.save(books, "library.csv");
                 System.out.println("프로그램을 종료합니다.");
                 break;
             }
