@@ -25,10 +25,10 @@ public class loadData {
                 books.add(book.fromCsv(line));
             }
 
-            System.out.println("CSV 로드 완료.");
+            System.out.println("로드 완료.");
 
         } catch (Exception e) {
-            System.out.println("CSV 파일 없음 → 기본값 사용");
+            System.out.println("파일없음");
         }
 
         return books;
