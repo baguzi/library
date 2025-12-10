@@ -11,10 +11,10 @@ public class Main {
         addBooksystem add_Book = new addBooksystem();
         Scanner sc = new Scanner(System.in);
 
-        // CSV 불러오기
+
         List<book> books = loadData.load("library.csv");
 
-        // 비어있으면 초기 데이터 추가
+
         if (books.isEmpty()) {
             books.add(new book(475, "미생물리학", "김병홍", "대출"));
             books.add(new book(530, "재료공학", "김암수", "반납"));
